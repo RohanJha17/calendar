@@ -1,7 +1,13 @@
 # Interactive Wall Calendar
 
 ## About the Project
-This project is an interactive, fully responsive 3D Wall Calendar built in React. Designed to mirror the physical satisfaction of interacting with a paper calendar, it allows users to navigate completely dynamic months, select dates and date ranges, and seamlessly jot down personal memories, events, or memos onto a beautifully lined notebook section. With a physically-inspired 3D page curl animation rotating around a stylized metallic spiral binding, it bridges the gap between digital utility and aesthetic novelty. Every month cycles through bespoke, seasonal custom imagery to give an incredibly tactile, authentic feel completely localized to the user.
+This project is a fully responsive interactive wall calendar made using React. It is designed to feel like using a real paper calendar.
+
+Users can easily move between different months, select single dates or a range of dates, and write notes for events, memories, or reminders in a dedicated notes section.
+
+The calendar also includes a smooth 3D page-turn animation, similar to flipping a real calendar page. Each month displays different seasonal images, making the experience feel more real and visually appealing.
+
+Overall, it combines useful features with a clean and engaging design to create a modern digital calendar experience.
 
 ### Visual Features In Action
 
