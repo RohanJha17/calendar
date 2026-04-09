@@ -64,14 +64,14 @@ const CalendarHeader = ({ currentDate, handleNextMonth, handlePrevMonth }) => {
         <div className="absolute inset-0 flex justify-between items-center px-4 md:px-8 z-30">
           <button
             onClick={handlePrevMonth}
-            className="pointer-events-auto p-2 md:p-3 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.3)] border border-white/40 transition-all group -mt-8"
+            className="cursor-pointer pointer-events-auto p-2 md:p-3 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.3)] border border-white/40 transition-all group -mt-8"
           >
             <ChevronLeft size={28} className="text-white drop-shadow-lg group-hover:-translate-x-0.5 transition-transform" />
           </button>
 
           <button
             onClick={handleNextMonth}
-            className="pointer-events-auto p-2 md:p-3 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.3)] border border-white/40 transition-all group -mt-8"
+            className="cursor-pointer pointer-events-auto p-2 md:p-3 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.3)] border border-white/40 transition-all group -mt-8"
           >
             <ChevronRight size={28} className="text-white drop-shadow-lg group-hover:translate-x-0.5 transition-transform" />
           </button>

@@ -75,7 +75,7 @@ const NotesSection = ({ currentDate, startDate }) => {
 
         <button
           onClick={handleSave}
-          className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm text-slate-600 hover:text-primary-600 hover:bg-primary-50 active:bg-primary-100 active:text-primary-600 hover:shadow-md transition-all opacity-100 md:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 flex items-center text-sm font-medium border border-slate-100"
+          className="cursor-pointer absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm text-slate-600 hover:text-primary-600 hover:bg-primary-50 active:bg-primary-100 active:text-primary-600 hover:shadow-md transition-all opacity-100 md:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 flex items-center text-sm font-medium border border-slate-100"
           title="Save Notes"
         >
           <Save size={16} className="mr-1.5" />
