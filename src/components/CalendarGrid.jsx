@@ -12,7 +12,6 @@ import {
 } from 'date-fns';
 
 const CalendarGrid = ({ currentDate, startDate, endDate, handleDateClick }) => {
-  // Re-render when notes are saved
   const [updateTrigger, setUpdateTrigger] = useState(0);
 
   useEffect(() => {
@@ -21,7 +20,6 @@ const CalendarGrid = ({ currentDate, startDate, endDate, handleDateClick }) => {
     return () => window.removeEventListener('notesSaved', handler);
   }, []);
 
-  // Calculate visible calendar range
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(monthStart);
   const startDateOfWeek = startOfWeek(monthStart, { weekStartsOn: 1 });
@@ -36,26 +34,21 @@ const CalendarGrid = ({ currentDate, startDate, endDate, handleDateClick }) => {
 
   return (
     <div className="w-full font-sans">
-      
-      {/* Week Header */}
       <div className="grid grid-cols-7 mb-2">
         {weekDays.map((day, idx) => (
           <div
             key={day}
-            className={`text-center text-xs font-bold ${
-              idx >= 5 ? 'text-primary-600' : 'text-slate-900'
-            }`}
+            className={`text-center text-xs font-bold ${idx >= 5 ? 'text-primary-600' : 'text-slate-900'
+              }`}
           >
             {day}
           </div>
         ))}
       </div>
 
-      {/* Calendar Grid */}
       <div className="grid grid-cols-7 gap-y-1 gap-x-0">
         {daysInGrid.map((day) => {
-          
-          // Date states
+
           const isCurrentMonth = isSameMonth(day, monthStart);
           const isSelectedStart = startDate && isSameDay(day, startDate);
           const isSelectedEnd = endDate && isSameDay(day, endDate);
@@ -66,19 +59,16 @@ const CalendarGrid = ({ currentDate, startDate, endDate, handleDateClick }) => {
           const isToday = isSameDay(day, new Date());
           const isWeekend = day.getDay() === 0 || day.getDay() === 6;
 
-          // Notes indicator
           const noteKey = `calendar-note-${format(day, 'yyyy-MM-dd')}`;
           const noteData = localStorage.getItem(noteKey);
           const hasNote = !!noteData && noteData.trim() !== '';
 
-          // Base styles
           let baseClasses =
-            "relative h-8 md:h-10 w-full flex items-center justify-center text-sm md:text-base cursor-pointer transition-all duration-200";
+            "relative h-8 md:h-9 w-full flex items-center justify-center text-xs md:text-sm cursor-pointer transition-all duration-200";
           let textClass = "";
           let bgClass = "bg-transparent";
           let roundClass = "";
 
-          // Styling logic
           if (!isCurrentMonth) {
             textClass = "text-slate-300";
           } else if (isSelectedStart || isSelectedEnd) {
@@ -88,8 +78,8 @@ const CalendarGrid = ({ currentDate, startDate, endDate, handleDateClick }) => {
               isSelectedStart && isSelectedEnd
                 ? "rounded-full"
                 : isSelectedStart
-                ? "rounded-l-full"
-                : "rounded-r-full";
+                  ? "rounded-l-full"
+                  : "rounded-r-full";
           } else if (isInRange) {
             textClass = isWeekend
               ? "text-primary-700 font-bold"
@@ -115,8 +105,6 @@ const CalendarGrid = ({ currentDate, startDate, endDate, handleDateClick }) => {
 
           return (
             <div key={day.toISOString()} className="relative">
-              
-              {/* Range background fillers */}
               {isInRange && !isSelectedStart && !isSelectedEnd && (
                 <div className="absolute inset-0 bg-primary-100 -mx-1" />
               )}
@@ -127,26 +115,22 @@ const CalendarGrid = ({ currentDate, startDate, endDate, handleDateClick }) => {
                 <div className="absolute inset-y-0 left-0 w-1/2 bg-primary-100" />
               )}
 
-              {/* Day Cell */}
               <div
                 className={`${baseClasses} ${textClass} ${bgClass} ${roundClass}`}
                 onClick={() => handleDateClick(day)}
               >
                 {format(day, 'd')}
 
-                {/* Today indicator */}
                 {isToday && !isSelectedStart && !isSelectedEnd && (
                   <span className="absolute bottom-1 w-1 h-1 bg-primary-500 rounded-full" />
                 )}
 
-                {/* Note indicator */}
                 {hasNote && (
                   <span
-                    className={`absolute top-1 right-2 w-1.5 h-1.5 rounded-full shadow-sm ${
-                      isSelectedStart || isSelectedEnd
+                    className={`absolute top-1 right-2 w-1.5 h-1.5 rounded-full shadow-sm ${isSelectedStart || isSelectedEnd
                         ? 'bg-white'
                         : 'bg-amber-400'
-                    }`}
+                      }`}
                     title="Has Notes"
                   />
                 )}

@@ -6,23 +6,19 @@ import { toast } from 'react-toastify';
 const NotesSection = ({ currentDate, startDate }) => {
   const [noteText, setNoteText] = useState('');
 
-  // Storage key based on selected date or full month
   const storageKey = startDate
     ? `calendar-note-${format(startDate, 'yyyy-MM-dd')}`
     : `calendar-note-${format(currentDate, 'yyyy-MM')}`;
 
-  // Title displayed above notes
   const keyTitle = startDate
     ? format(startDate, 'MMMM do, yyyy')
     : `Month of ${format(currentDate, 'MMMM yyyy')}`;
 
-  // Load saved note on key change
   useEffect(() => {
     const saved = localStorage.getItem(storageKey);
     setNoteText(saved || '');
   }, [storageKey]);
 
-  // Save or remove note
   const handleSave = () => {
     if (!noteText || noteText.trim() === '') {
       localStorage.removeItem(storageKey);
@@ -48,8 +44,7 @@ const NotesSection = ({ currentDate, startDate }) => {
 
   return (
     <div className="w-full h-full flex flex-col pt-2 text-slate-800">
-      
-      {/* Header */}
+
       <div className="flex justify-between items-center mb-3">
         <h3 className="font-bold text-sm tracking-wide text-slate-400 uppercase">
           Notes
@@ -59,10 +54,8 @@ const NotesSection = ({ currentDate, startDate }) => {
         </span>
       </div>
 
-      {/* Notes Editor */}
       <div className="grow relative group h-48 md:h-auto min-h-50">
-        
-        {/* Lined background */}
+
         <div
           className="absolute inset-0 pointer-events-none opacity-20"
           style={{
@@ -72,7 +65,6 @@ const NotesSection = ({ currentDate, startDate }) => {
           }}
         ></div>
 
-        {/* Textarea */}
         <textarea
           value={noteText}
           onChange={(e) => setNoteText(e.target.value)}
@@ -81,7 +73,6 @@ const NotesSection = ({ currentDate, startDate }) => {
           style={{ lineHeight: '28px' }}
         />
 
-        {/* Save Button */}
         <button
           onClick={handleSave}
           className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm text-slate-600 hover:text-primary-600 hover:bg-primary-50 active:bg-primary-100 active:text-primary-600 hover:shadow-md transition-all opacity-100 md:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 flex items-center text-sm font-medium border border-slate-100"

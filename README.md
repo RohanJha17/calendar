@@ -12,7 +12,7 @@ Overall, it combines useful features with a clean and engaging design to create 
 ### Visual Features In Action
 
 **The Current Month View:**
-![Current Month Calendar](./public/currnet_month.png)
+![Current Month Calendar](./public/current_month.png)
 
 **Date Range Selection:**
 ![Date Selection Highlights](./public/date_select.png)
